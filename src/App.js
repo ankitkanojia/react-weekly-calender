@@ -1,11 +1,16 @@
 import Tippy from '@tippy.js/react';
+import 'tippy.js/dist/tippy.css';
 import React, { useState } from "react";
 import "resize-observer-polyfill/dist/ResizeObserver.global";
 import { TimeGridScheduler, classes, DefaultEventRootComponent } from "@remotelock/react-week-scheduler";
 import "@remotelock/react-week-scheduler/index.css";
-import demoClasses from './index.module.scss';
+import './index.module.scss';
 import PropTypes from 'prop-types';
 import { ReactComponent as DeleteIcon } from "./outline-delete-24px.svg";
+
+// node_modules\@remotelock\react-week-scheduler\src\hooks\useMousetrap.ts
+// node_modules\@remotelock\react-week-scheduler\src\components\TimeGridScheduler.tsx
+// import { ExtendedKeyboardEvent } from "mousetrap";
 
 const rangeStrings = [
   ["2019-03-03T22:45:00.000Z", "2019-03-04T01:15:00.000Z"],
@@ -22,17 +27,16 @@ const EventRoot = React.forwardRef(function EventRoot(
   ref,
 ) {
   return (
-    <Tippy
+    <Tippy 
       arrow
       interactive
       isEnabled={!disabled}
       hideOnClick={false}
-      className={demoClasses.tooltip}
+      
       content={
-        <button disabled={disabled} onClick={handleDelete}>
-          <DeleteIcon className={demoClasses.icon} />
-          Delete
-        </button>
+        <span disabled={disabled} onClick={handleDelete}>
+          <DeleteIcon style={{filter : "invert(100%)"}} />
+        </span>
       }
     >
       <DefaultEventRootComponent
@@ -41,7 +45,7 @@ const EventRoot = React.forwardRef(function EventRoot(
         {...props}
         ref={ref}
       />
-    </Tippy>
+    </Tippy >
   );
 });
 
