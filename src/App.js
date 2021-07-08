@@ -4,9 +4,8 @@ import React, { useState } from "react";
 import "resize-observer-polyfill/dist/ResizeObserver.global";
 import { TimeGridScheduler, classes, DefaultEventRootComponent } from "@remotelock/react-week-scheduler";
 import "@remotelock/react-week-scheduler/index.css";
-import './index.module.scss';
-import PropTypes from 'prop-types';
 import { ReactComponent as DeleteIcon } from "./outline-delete-24px.svg";
+import demoClasses from './index.module.scss';
 
 // node_modules\@remotelock\react-week-scheduler\src\hooks\useMousetrap.ts
 // node_modules\@remotelock\react-week-scheduler\src\components\TimeGridScheduler.tsx
@@ -32,11 +31,12 @@ const EventRoot = React.forwardRef(function EventRoot(
       interactive
       isEnabled={!disabled}
       hideOnClick={false}
-      
+      className={demoClasses.tooltip}
+      placement={"bottom"}
       content={
-        <span disabled={disabled} onClick={handleDelete}>
-          <DeleteIcon style={{filter : "invert(100%)"}} />
-        </span>
+        <button disabled={disabled} onClick={handleDelete}>
+          <DeleteIcon className={demoClasses.icon} />
+        </button>
       }
     >
       <DefaultEventRootComponent
@@ -81,13 +81,3 @@ export default function App() {
     </div>
   );
 }
-
-App.propTypes = {
-  className: PropTypes.string,
-  classes: typeof import('./styles/styles.module.scss').default,
-  style: React.CSSProperties,
-  cellIndex: PropTypes.number,
-  rangeIndex: PropTypes.number,
-  isActive: PropTypes.bool,
-  disabled: PropTypes.bool
-};
