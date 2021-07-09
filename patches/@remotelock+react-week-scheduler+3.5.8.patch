@@ -1,0 +1,23 @@
+diff --git a/node_modules/@remotelock/react-week-scheduler/src/components/TimeGridScheduler.tsx b/node_modules/@remotelock/react-week-scheduler/src/components/TimeGridScheduler.tsx
+index 7d0a471..c6148ae 100644
+--- a/node_modules/@remotelock/react-week-scheduler/src/components/TimeGridScheduler.tsx
++++ b/node_modules/@remotelock/react-week-scheduler/src/components/TimeGridScheduler.tsx
+@@ -39,6 +39,7 @@ import { getSpan } from '../utils/getSpan';
+ import { mergeEvents, mergeRanges } from '../utils/mergeEvents';
+ import { Cell } from './Cell';
+ import { Schedule, ScheduleProps } from './Schedule';
++import { ExtendedKeyboardEvent } from "mousetrap";
+ 
+ const MINS_IN_DAY = 24 * 60;
+ const horizontalPrecision = 1;
+diff --git a/node_modules/@remotelock/react-week-scheduler/src/hooks/useMousetrap.ts b/node_modules/@remotelock/react-week-scheduler/src/hooks/useMousetrap.ts
+index fd43257..8215e8f 100644
+--- a/node_modules/@remotelock/react-week-scheduler/src/hooks/useMousetrap.ts
++++ b/node_modules/@remotelock/react-week-scheduler/src/hooks/useMousetrap.ts
+@@ -1,5 +1,6 @@
+ import Mousetrap from 'mousetrap';
+ import { useEffect, useRef } from 'react';
++import { ExtendedKeyboardEvent } from "mousetrap";
+ 
+ /**
+  * Use mousetrap hook
